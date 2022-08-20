@@ -27,7 +27,7 @@ let generateScales = () => {
     heightScale = d3.scaleLinear()
                     .domain([0, d3.max(values, (item) => {
                         // from fcc json data: Array[1]
-                        return item[1] // https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json
+                        return item[1]    // https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json
                     })])
                     .range([0, height - (2 * padding)])
     xScale = d3.scaleLinear()
@@ -35,38 +35,43 @@ let generateScales = () => {
                .range([padding, width - padding])
 
     let datesArray = values.map((item) => {
-        return new Date(item[0]) // from fcc json data: Array[0] is the date
+        return new Date(item[0])    // from fcc json data: Array[0] is the date
     })
 
     xAxisScale = d3.scaleTime()
-                   .domain([d3.min(datesArray), d3.max(datesArray)])
-                   .range([padding, width - padding])
+        .domain([d3.min(datesArray), d3.max(datesArray)])
+        .range([padding, width - padding]);
 
     yAxisScale = d3.scaleLinear()
-                   .domain([0, d3.max(values, (item) => {
-                       return item[1] // from fcc json data: Array[1] is the GDP
-                   })])
-                   .range([height - padding, padding])
+        .domain([0, d3.max(values, (item) => {
+            return item[1]       // from fcc json data: Array[1] is the GDP
+        })])
+        .range([height - padding, padding]);
 }
 
 let drawBars = () => {
-
+    svg.selectAll('rect')
+        .data(values)
+        .enter()
+        .append('rect')
+        .attr('class', 'bar')
+        .attr('width', (width - (2 * padding)) / values.length)
 }
 
 
 let generateAxes = () => {
-    let xAxis = d3.axisBottom(xAxisScale)
-    let yAxis = d3.axisLeft(yAxisScale)
+    let xAxis = d3.axisBottom(xAxisScale);
+    let yAxis = d3.axisLeft(yAxisScale);
 
     svg.append('g')
-       .call(xAxis)
-       .attr('id', 'x-axis')
-       .attr('transform', 'translate(0, ' + (height - padding) + ')')
+        .call(xAxis)
+        .attr('id', 'x-axis')
+        .attr('transform', 'translate(0, ' + (height - padding) + ')');
 
     svg.append('g')
-       .call(yAxis)
-       .attr('id', 'y-axis')
-
+        .call(yAxis)
+        .attr('id', 'y-axis')
+        .attr('transform', 'translate(' + padding + ', 0)');
 }
 
 req.open('GET', url, true);

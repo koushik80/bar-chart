@@ -22,9 +22,11 @@
 <p>User Story 11: The data-gdp attribute and its corresponding bar element should align with the corresponding value on the y-axis.</p>
 <p>User Story 12: I can mouse over an area and see a tooltip with a corresponding id="tooltip" which displays more information about the area.</p>
 <p>User Story 13: My tooltip should have a data-date property that corresponds to the data-date of the active area.</p>
-<p align="left">fcc Objective: Build an app that is functionally similar to this: </p><br>
-<p align="left"><a href="https://codepen.io/freeCodeCamp/full/GrZVaM" target="_blank">fcc demo link</a></p>
-<p align="left">Reference: </p><br>
+<p align="left">fcc Objective: Build an app that is functionally similar to this: </p>
+<ul>
+<li align="left"><a href="https://codepen.io/freeCodeCamp/full/GrZVaM" target="_blank">fcc demo link</a></li>
+</ul>
+<p align="left">Reference: </p>
 <ul>
 <li align="left"><a href="https://github.com/d3/d3/blob/main/API.md#axes-d3-axis" target="_blank">D3 API Reference</a></li>
 </ul>
