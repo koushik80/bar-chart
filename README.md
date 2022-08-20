@@ -26,7 +26,7 @@
 <ul>
 <li align="left"><a href="https://codepen.io/freeCodeCamp/full/GrZVaM" target="_blank">fcc demo link</a></li>
 </ul>
-<p align="left">Reference: </p>
+<p align="left">References: </p>
 <ul>
 <li align="left"><a href="https://github.com/d3/d3/blob/main/API.md#axes-d3-axis" target="_blank">D3 API Reference</a></li>
 </ul>
