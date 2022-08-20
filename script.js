@@ -2,16 +2,41 @@ let url = 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/m
 let req = new XMLHttpRequest();
 
 
-let data
-let values
+let data;
+let values;
 
-let heightScale
-let xScale
-let xAxisScale
-let yAxisScale
+let heightScale;
+let xScale;
+let xAxisScale;
+let yAxisScale;
 
-let width = 800
-let height = 600
-let padding = 40
+let width = 800;
+let height = 600;
+let padding = 40;
 
-let svg = d3.select('svg')
+let svg = d3.select('svg');
+
+let drawCanvas = () => {
+    svg.attr('width', width)
+    svg.attr('height', height)
+}
+
+let generateScales = () => {
+
+
+}
+
+let drawBars = () => {
+
+}
+
+
+let generateAxis = () => {
+
+}
+
+req.open('GET', url, true);
+req.onload = () => {
+    console.log(req.responseText);
+}
+req.send();
