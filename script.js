@@ -39,8 +39,14 @@ let generateScales = () => {
     })
 
     xAxisScale = d3.scaleTime()
-                   .domain([])
-                   .range([])
+                   .domain([d3.min(datesArray), d3.max(datesArray)])
+                   .range([padding, width - padding])
+
+    yAxisScale = d3.scaleLinear()
+                   .domain([0, d3.max(values, (item) => {
+                       return item[1] // from fcc json data: Array[1] is the GDP
+                   })])
+                   .range([height - padding, padding])
 }
 
 let drawBars = () => {
@@ -49,6 +55,10 @@ let drawBars = () => {
 
 
 let generateAxes = () => {
+    let xAxis = d3.axisBottom(xAxisScale)
+    svg.append('g')
+       .call(xAxis)
+       .attr('id', 'x-axis')
 
 }
 
