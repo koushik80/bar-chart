@@ -3,7 +3,7 @@ let req = new XMLHttpRequest();
 
 
 let data;
-let values;
+let values = [];
 
 let heightScale;
 let xScale;
@@ -31,12 +31,18 @@ let drawBars = () => {
 }
 
 
-let generateAxis = () => {
+let generateAxes = () => {
 
 }
 
 req.open('GET', url, true);
 req.onload = () => {
-    console.log(req.responseText);
+    data = JSON.parse(req.responseText);
+    values = data.data;
+    console.log(values);
+    drawCanvas();
+    generateScales();
+    drawBars();
+    generateAxes();
 }
 req.send();

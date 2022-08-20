@@ -1,4 +1,4 @@
-<div align="center"><a href="" target="_blank">Visualize Data with a Bar Chart</a></div>
+<div align="center"><a href="https://fcc-p1-bar-chart.netlify.app/" target="_blank">Visualize Data with a Bar Chart</a></div>
 <h1 align="center">fcc_Data Visualization Project 1</h1><br>
 <h3 align="left">Technologies u:</h3>
 <ul>
