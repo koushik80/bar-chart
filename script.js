@@ -123,8 +123,8 @@ req.onload = () => {
     data = JSON.parse(req.responseText);
     values = data.data;
     console.log(values);
-    myChart();
     generateScales();
+    myChart();
     drawBars();
     generateAxes();
 }
