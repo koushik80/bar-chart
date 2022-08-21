@@ -88,7 +88,7 @@ let drawBars = () => {
                 .style("opacity", 0.9);
             //tooltip.attr("data-date", item[0]);
 
-            tooltip.text(item[0])
+            tooltip.text(item[0]);
 
             document.querySelector('#tooltip').setAttribute('data-date', item[0])
             //document.querySelector('#tooltip').textContent = item[0]

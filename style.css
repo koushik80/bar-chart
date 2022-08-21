@@ -15,6 +15,7 @@ body{
     justify-content: center;
     align-items: center;
     height: 100%;
+    font-family: Helvetica;
 }
 
 svg{
@@ -35,7 +36,8 @@ svg{
 }
 
 g{
-    color: slateblue;
+    color: rgb(12, 216, 128);
+    font-size: 12px;
 }
 
 #tooltip{
@@ -55,3 +57,4 @@ g{
     fill: rgb(226, 35, 13);
     font-weight: bold;
 }
+
