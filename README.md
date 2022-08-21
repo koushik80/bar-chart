@@ -5,7 +5,7 @@
 <li>HTML</li>
 <li>JavaScript</li>
 <li>CSS</li>
-<li>D3</li>
+<li> D3 svg-based visualization library</li>
 </ul>
 <h1 align="left">User Stories</h1> <br>
 

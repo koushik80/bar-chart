@@ -39,9 +39,17 @@ g{
 }
 
 #tooltip{
+    position: absolute;
+    text-align: center;
+    width: 60px;
+    height: auto;
+    padding: 2px;
     margin-top: 10px;
     color: #86efef;
     font-size: 28px;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
 }
 
 #title{

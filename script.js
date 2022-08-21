@@ -14,6 +14,7 @@ let width = 800;
 let height = 600;
 let padding = 40;
 
+
 let svg = d3.select('svg');
 
 let myChart = () => {
@@ -25,38 +26,40 @@ let myChart = () => {
        // https://www.freecodecamp.org/learn/data-visualization/data-visualization-with-d3/set-a-domain-and-a-range-on-a-scale
 let generateScales = () => {
     heightScale = d3.scaleLinear()
-                    .domain([0, d3.max(values, (item) => {
+                     .domain([0, d3.max(values, (item) => {
                         // from fcc json data: Array[1]
                         return item[1]    // https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json
                     })])
                     .range([0, height - (2 * padding)])
     xScale = d3.scaleLinear()
-               .domain([0, values.length - 1])
-               .range([padding, width - padding])
+                .domain([0, values.length - 1])
+                .range([padding, width - padding])
 
     let datesArray = values.map((item) => {
         return new Date(item[0])    // from fcc json data: Array[0] is the date
     })
 
     xAxisScale = d3.scaleTime()
-        .domain([d3.min(datesArray), d3.max(datesArray)])
-        .range([padding, width - padding]);
+                    .domain([d3.min(datesArray), d3.max(datesArray)])
+                    .range([padding, width - padding]);
 
     yAxisScale = d3.scaleLinear()
-        .domain([0, d3.max(values, (item) => {
-            return item[1]       // from fcc json data: Array[1] is the GDP
+                    .domain([0, d3.max(values, (item) => {
+                        return item[1]       // from fcc json data: Array[1] is the GDP
         })])
-        .range([height - padding, padding]);
+                    .range([height - padding, padding]);
 }
 
 let drawBars = () => {
 
     let tooltip = d3.select('body')
-                    .append('div')
-                    .attr('id', 'tooltip')
-                    .style('visibility', 'hidden')
-                    .style('width', 'auto')
-                    .style('height', 'auto')
+                     .append('div')
+                     .attr('id', 'tooltip')
+                     .attr('class', 'tooltip')
+                     .style('opacity', 0)
+                     .style('visibility', 'hidden')
+                     .style('width', 'auto')
+                     .style('height', 'auto');
 
     svg.selectAll('rect')
         .data(values)
@@ -64,12 +67,6 @@ let drawBars = () => {
         .append('rect')
         .attr('class', 'bar')
         .attr('width', (width - (2 * padding)) / values.length)
-        .attr('data-date', (item) => {
-            return item[0]
-        })
-        .attr('data-gdp', (item) => {
-            return item[1]
-        })
         .attr('height', (item) => {
             return heightScale(item[1])
         })
@@ -79,17 +76,29 @@ let drawBars = () => {
         .attr('y', (item) => {
             return (height - padding) - heightScale(item[1])
         })
+        .attr('data-date', (item) => {
+            return item[0]
+        })
+        .attr('data-gdp', (item) => {
+            return item[1]
+        })
         .on('mouseover', (item) => {
             tooltip.transition()
                 .style('visibility', 'visible')
+                .style("opacity", 0.9);
+            //tooltip.attr("data-date", item[0]);
 
             tooltip.text(item[0])
 
             document.querySelector('#tooltip').setAttribute('data-date', item[0])
+            //document.querySelector('#tooltip').textContent = item[0]
         })
         .on('mouseout', (item) => {
             tooltip.transition()
                 .style('visibility', 'hidden')
+                .duration(400)
+                .style("opacity", 0);
+            tooltip.attr("data-date", item[0]);
         })
 }
 
@@ -105,6 +114,7 @@ let generateAxes = () => {
     svg.append('g')
         .call(yAxis)
         .attr('id', 'y-axis')
+        //.attr('transform', 'translate(' + padding + ', ' + padding + ')')
         .attr('transform', 'translate(' + padding + ', 0)');
 }
 
