@@ -14,7 +14,6 @@ let width = 800;
 let height = 600;
 let padding = 40;
 
-
 let svg = d3.select('svg');
 
 let myChart = () => {
