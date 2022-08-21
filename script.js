@@ -50,6 +50,15 @@ let generateScales = () => {
 }
 
 let drawBars = () => {
+
+    let tooltip = d3.select('body')
+                    .append('div')
+                    .attr('id', 'tooltip')
+                    .style('visibility', 'hidden')
+                    .style('width', 'auto')
+                    .style('height', 'auto')
+    
+    
     svg.selectAll('rect')
         .data(values)
         .enter()
@@ -63,14 +72,15 @@ let drawBars = () => {
             return item[1]
         })
         .attr('height', (item) => {
-           return heightScale(item[1])
+            return heightScale(item[1])
         })
         .attr('x', (item, index) => {
             return xScale(index)
-
-         })
+        })
+        .attr('y', (item) => {
+            return (height - padding) - heightScale(item[1])
+        })
 }
-
 
 let generateAxes = () => {
     let xAxis = d3.axisBottom(xAxisScale);
